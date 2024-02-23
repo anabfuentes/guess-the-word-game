@@ -24,20 +24,16 @@ const getWord = async function () {
 
 getWord();
 
-//display symbols as placeholders for chosen word's letters
 const placeholder = function (word) {
-    const placeholderLetters = []; //empty array as user will input letters and we're holding space
+    const placeholderLetters = [];
     for (const letter of word) { 
-        //console.log(letter);
         placeholderLetters.push("●");
-    } //for of array that loops through the letters of the word
-    wordInProgress.innerText = placeholderLetters.join(""); //joining the word progress to the placeholder string
+    } 
+    wordInProgress.innerText = placeholderLetters.join(""); 
 };
 
-//placeholder(word);
-
 guessLetterButton.addEventListener("click", function (e) {
-    e.preventDefault(); //prevents the default action of form submitting, reloading page
+    e.preventDefault(); 
     message.innerText = "";
     const guess = letterInput.value;
     const goodGuess = validateInput(guess);
@@ -135,14 +131,13 @@ const startOver = function () {
 };
 
 playAgainButton.addEventListener("click", function () {
-    //resets all original values
     message.classList.remove("win");
     guessedLetters = [];
     remainingGuesses = 8;
     remainingGuessesSpan.innerText = `${remainingGuesses} guesses`;
     guessedLettersElement.innerHTML = "";
     message.innerText = "";
-    // Grab a new word
+
     getWord();
 
     guessLetterButton.classList.remove("hide");
